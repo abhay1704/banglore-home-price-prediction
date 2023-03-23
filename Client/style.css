@@ -1,0 +1,151 @@
+        * {
+            margin: 0;
+            font-size: 1.3rem;
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+            overflow: hidden;
+            background-image: url('house.jpg');
+            background-size: auto;
+            height: 100%;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        form {
+            text-align: left;
+        }
+
+
+        .container {
+            background-color: rgba(242, 244, 239, 0.45);
+            width: 24rem;
+            height: 28rem;
+            border-radius: 5px;
+            box-shadow: 2px 3px 20px rgb(201, 199, 199);
+            padding: 3rem 2.5rem;
+            margin: auto;
+            position: absolute;
+            top: 7%;
+            left: 8%;
+            z-index: 2;
+        }
+
+        #form_title {
+            font-size: 2rem;
+            text-align: left;
+            color: rgb(81, 79, 79);
+        }
+
+        hr {
+            border: none;
+            border-bottom: 10px solid white;
+            height: 10px;
+            outline: none;
+            width: 100%;
+            text-align: left;
+            margin-top: 2%;
+        }
+
+        #left {
+            width: 100%;
+            padding: 0;
+            padding-right: 65%;
+        }
+
+        input,
+        select,
+        option {
+            display: block;
+            margin: 5% 0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: left;
+            outline: none;
+            border: none;
+            background-color: #f8f7f6ca;
+            color: rgba(101, 98, 98, 0.791);
+        }
+
+        .res {
+            display: flex;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        button {
+            display: block;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-align: left;
+            color: #f8f7f6ca;
+            display: inline-block;
+            height: fit-content;
+            border: none;
+            background-color: rgba(101, 98, 98, 0.791);
+        }
+
+        textarea {
+            display: inline-block;
+            outline: none;
+            padding: 5px;
+            color: rgba(101, 98, 98, 0.791);
+            background-color: #f8f7f6ca;
+        }
+
+        button:hover {
+            background-color: #515050e4;
+            color: #f8f7f6d5;
+            transition: 0.3s cubic-bezier(1, 0.25, 0.21, 1.32);
+        }
+
+        button:active {
+            transform: translateY(4px);
+            transition: 0.6s cubic-bezier(1, 0.25, 0.21, 1.32);
+        }
+
+        @media screen and (max-width: 1075px) {
+            body {
+                background-size: 170%;
+            }
+
+            .container {
+                height: 28rem;
+                padding: 2.7rem 2.2rem;
+                width: 24rem;
+            }
+        }
+
+        @media screen and (max-width: 700px) {
+            body {
+                background-size: 300%;
+            }
+
+            .container {
+                height: 27rem;
+                width: 20rem;
+                padding: 2.5rem 2rem;
+                top: 5%;
+                left: 5%;
+            }
+        }
+
+        @media screen and (max-width: 450px) {
+            body {
+                background-size: 300%;
+            }
+
+            .container {
+                height: 70%;
+                width: 90%;
+                padding: 1rem 0.8rem;
+                top: 15%;
+                left: 3%;
+            }
+        }

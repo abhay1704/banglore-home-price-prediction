@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home Price Predictor</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="form_title">House price</h1>
+        <div id="left">
+            <hr>
+        </div>
+        <form id="get_price">
+            <select id="locations" name="location" , placeholder="location">
+                <option value="" disable selected>
+                    --Please Select Location--
+                </option>
+            </select>
+            <input type="number" , name="bhk" , placeholder="No of Bedrooms (BHK)" required>
+            <input type="number" , name="bath" , placeholder="No of Bathrooms" required>
+            <input type="number" , name="total_sqft" , placeholder="Total area in Square ft." required>
+            <div class="res">
+                <button type="submit">Predict Price</button>
+                <textarea name="result" id="result" cols="10" rows="5" readonly></textarea>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        function showLocations(res) {
+            var dropdown = document.getElementById('loc')
+            for (let i = 0; i < len(res); i++) {
+                var newNode = `<option value = ${res[i]} > ${res[i]} </option>`;
+                dropdown.appendChild(newNode);
+            }
+        }
+     
+        let url_locations = '/api/loc'
+        $.get(url_locations, (data, status) => {
+            var dropdown = document.getElementById("locations");
+            for (i in data) {
+                let node = `<option value = ${data[i]} > ${data[i]} </option>`;
+                dropdown.insertAdjacentHTML("beforeend", node);
+            }
+
+        })
+
+        document.forms['get_price'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            fetch('/api/get_price', {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target)) 
+            }).then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.text(); 
+            }).then((body) => {
+                let price = parseInt(parseFloat(body) * 100000);
+                document.getElementById("result").innerText = `Rs. ${price}`;
+            }).catch((error) => {
+                // TODO handle error
+            });
+        });
+    </script>
+</body>
+
+</html>
